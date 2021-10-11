@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewpoint" content="width=device-width,initial-scale=1">
+    <title>GPCI cities flight network</title>
+    <!-- Using Google Fonts: Oswald -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <style>
+        @charset "utf-8";
+
+        body {
+            width: auto;
+            margin: auto;
+            background-color: black;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        video {
+            position: fixed;
+            top: -100px;
+            margin: auto;
+            width: 100%;
+        }
+
+        .textbox {
+            color: #ffffff;
+            margin-top: 375px;
+            position: absolute;
+            top: 100px;
+            left: 300px;
+            width: 100%;
+            height: 100px;
+        }
+
+        /* === Aboutの装飾 === */
+        #about {
+            position: relative;
+            display: inline-block;
+            transition: .3s;
+            cursor: pointer;
+        }
+        #about::before,
+        #about::after {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 1px;
+            background-color: #627295;
+            transition: .3s;
+        }
+        #about::before {
+            top: 0;
+            left: 0;
+        }
+        #about::after {
+            bottom: 0;
+            right: 0;
+        }
+        #about:hover::before,
+        #about:hover::after {
+            width: 100%;
+        }
+
+        /* === ボタンの装飾 === */
+        .btn-square-shadow {
+            display: inline-block;
+            padding: 0.2em 3em;
+            text-decoration: none;
+            background: #668ad8;/*ボタン色*/
+            color: #FFF;
+            border-bottom: solid 4px #627295;
+            border-radius: 25px;
+        }
+
+        .btn-square-shadow:hover {
+            background: #FFF;/*ボタン色*/
+            color: #668ad8;
+            border-bottom: solid 4px #323b4d;
+        }
+
+        .btn-square-shadow:active {
+            /*ボタンを押したとき*/
+            -webkit-transform: translateY(4px); /*Y軸方向に4px移動（transform）。Chrome/Safari用のベンダープレフィックス（-webkit-）*/
+            transform: translateY(4px); /*Y軸方向に4px移動（transform）*/
+            box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+            border-bottom: none;
+        }
+
+        /* === スライドメニュー === */
+        #nav {
+            position: fixed;
+            left: -1000px;
+            top: 0;
+            background-color: rgba(0,0,0,.9);
+            color: white;
+            width: 600px;
+            height: 100%;
+            padding-top: 50px;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        /* スライドメニューが開かれた時の移動距離 */
+        .show {
+            transform: translate3d(1000px, 0, 0);
+        }
+
+        /* スライドメニューの開閉のアニメーション時間 */
+        #nav {
+            transition: transform 0.5s;
+        }
+
+        #close_nav {
+            text-align: right;
+            padding-right: 20px;
+        }
+
+        /* IUSページへのリンク */
+        #ius_en, #ius_jp {
+            color: white;
+        }
+
+        #ius_en:hover, 
+        #ius_jp:hover {
+            color: #627295;
+        }
+
+
+        /* === レスポンシブデザイン === */
+        @media screen and (max-width: 1030px) {
+            /* 画面サイズがmax-widthで指定の幅以下の場合に適用 */
+            video {
+                position: fixed;
+                top: -200px;
+                left: -1600px;
+                width: 400%;
+            }
+
+            .textbox  {
+                margin-top: 1000px;
+                font-size: 20px;
+                left: 100px;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header></header>
+
+    <!-- Place a video -->
+    <video src="Flight Network Video_glitch_low.mp4" autoplay playsinline muted loop></video>
+
+    <!-- Textbox -->
+    <div class="textbox">
+        <h1>Global Power Cities<br>Flight Network Analysis<br>2019-2020</h1>
+        <div id="open_nav"><p id="about">About Flight Network Analysis >></p></div>
+        <a href="https://www.arcgis.com/apps/webappviewer/index.html?id=802f730215644f5e979b6ea2fa8bafb9" class="btn-square-shadow">See Result</a>
+    </div>
+
+    <nav id="nav">
+        <div id="close_nav"></div>
+        <h2>Background and Objective</h2>
+        <p>Since early 2020, the COVID-19 pandemic has been restricting travel and access to cities around the world. <a id="ius_en" href="https://mori-m-foundation.or.jp/wordpress/english/ius2">The Mori Memorial Foundation’s Institute for Urban Strategies</a> has therefore conducted an analysis of the flight network to determine how COVID-19 has affected the number of international passenger flights between major cities across the globe.</p>
+        <br>
+        <h2>Methodology</h2>
+        <p>The flight data for this analysis is taken from the schedule data for international nonstop flights in the Schedule Analyser provided by OAG Aviation Worldwide Limited. It compares two sets of data: the number of flights from April 2019 to March 2020, and the number of flights from April 2020 to March 2021. The target airports are the 73 airports associated with the city codes defined by the International Air Transport Association (IATA) for the 48 cities included in the Global Power City Index 2021. The base map is Natural Earth’s 1:10m Land / Ocean map.</p>
+        <br>
+        <h2>Key Findings</h2>
+        <p>Compared to FY2019, the overall frequency of international flights between the 48 GPCI cities decreased by 49.4% in FY2020. By region of Asia, North America, Europe, and Other (Africa, Latin America, Oceania, Middle East), Asian cities had the biggest decline of 51.9%. Among European cities the decrease was 49.7%, while in North American and Other cities there was a decrease of 49.0%.</p>
+    </nav>
+
+    <!-- スライドメニュー -->
+    <script>
+        // Menu bar
+        jQuery(function(){
+            $("#open_nav").on("click", function(){
+                $("#nav").toggleClass("show");
+            })
+        });
+        
+        jQuery(function(){
+            $("nav").on("click", function(){
+                $("#nav").removeClass("show");
+            })
+        });
+    </script>
+
+</body>
+</html>
